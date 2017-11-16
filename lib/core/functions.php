@@ -36,7 +36,7 @@ curl_close($ch);
 function INZU_POST($end_point, $args, $return = false){
 
 $url = API_BASE.API_VERSION."/".$end_point;
-echo $url;
+
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_POST, true);
