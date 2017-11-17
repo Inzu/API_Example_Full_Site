@@ -21,8 +21,7 @@ $_SESSION['page_state'] = "store.php";
 
 //Get the category selected by the user and store in session variable 
 
-$category = preg_replace("/[^a-zA-Z0-9[:blank:][:space:]_]/", "", urldecode( @$_REQUEST['category'] ));
-$category_api = urlencode($category);
+$category = preg_replace("/[^a-zA-Z0-9[:blank:][:space:]_]/", "", @$_REQUEST['category']);
 
 if ( $category ) $_SESSION['category'] = $category;
 $category = @$_SESSION['category'];
@@ -37,7 +36,7 @@ echo<<<EOD
 EOD;
 
 //Request data from INZU for the selected category
-$inzu = INZU_GET("store/product", array("category"=>$category_api));
+$inzu = INZU_GET("store/product", array("category"=>$category));
 
 //A loop for each product
 $i = 0;
