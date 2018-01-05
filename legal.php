@@ -10,7 +10,7 @@ require("template/template_start.php"); /// Your site template start
 
 /*Page Content*/
 
-$entry_id = preg_replace("/[^0-9]/", "", @$_GET['id']);
+$entry_id = preg_replace("/[^0-9]/", "", @$_GET['entry_id']);
 
 //Request data from INZU from the "Legal" section
 $inzu = INZU_GET("cms/legal", array("entry_id"=>$entry_id));
