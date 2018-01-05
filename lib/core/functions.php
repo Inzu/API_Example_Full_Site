@@ -86,7 +86,7 @@ function site_map( ){
 		$cat = $navigation_item->category;
 		
 		if($link){
-		$navigation .= '<li><a href="'.$link.'?id='.$id.'&category='.$cat.'">'.$navigation_item->title.'</a>';
+		$navigation .= '<li><a href="'.$link.'?entry_id='.$id.'&category='.$cat.'">'.$navigation_item->title.'</a>';
 		} else {
 		$navigation .= '<li>'.$navigation_item->title;
 		}
@@ -105,7 +105,7 @@ function site_map( ){
 				///Send category for store sub-menus
 				$cat = $sub_menu_item->category;
 				
-				$navigation .= '<li><a href="'.$sub_link.'?id='.$id.'&category='.$cat.'">'.$sub_menu_item->title.'</a></li>';
+				$navigation .= '<li><a href="'.$sub_link.'?entry_id='.$id.'&category='.$cat.'">'.$sub_menu_item->title.'</a></li>';
 			}
 			
 			$navigation .= '</ul>';
