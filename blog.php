@@ -16,7 +16,7 @@ $entry_id = preg_replace("/[^0-9]/", "", @$_GET['entry_id']);
 
 //Request data from INZU for the 32 latest "Blog" entries from the category set in the sitemap ordered by date and in ascending order.
 
-$category = preg_replace("/[^a-zA-Z0-9]/", "", @$_GET['id']);
+$category = preg_replace("/[^a-zA-Z0-9]/", "", @$_GET['category']);
 
 $arguments = array("page"=>"1", "page_rows"=>"32", "order"=>"date", "order_type"=>"ASC", "category"=>$category);
 $inzu = INZU_GET("cms/blog", $arguments);
