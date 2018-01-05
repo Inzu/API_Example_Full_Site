@@ -11,7 +11,7 @@ require("template/template_start.php"); /// Your site template start
 /*Page Content*/
 
 //Get the entry id
-$entry_id = preg_replace("/[^0-9]/", "", @$_GET['id']);
+$entry_id = preg_replace("/[^0-9]/", "", @$_GET['entry_id']);
 
 
 //Request data from INZU for the 10 latest "Sound" entries ordered by date and in ascending order
@@ -46,7 +46,7 @@ EOD;
 
 $archive.=<<<EOD
 <div class="archive_row">
-<div class="archive_list" ><a  href="sound.php?id={$entry->entry_id}">{$entry->title}</a></div>
+<div class="archive_list" ><a  href="sound.php?entry_id={$entry->entry_id}">{$entry->title}</a></div>
 </div>
 EOD;
 
