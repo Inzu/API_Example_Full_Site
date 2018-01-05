@@ -11,7 +11,7 @@ require("template/template_start.php"); /// Your site template start
 /*Page Content*/
 
 //Get the entry id
-$entry_id = preg_replace("/[^0-9]/", "", @$_GET['id']);
+$entry_id = preg_replace("/[^0-9]/", "", @$_GET['entry_id']);
 
 //Request data from INZU from the "People" section
 $inzu = INZU_GET("cms/people", array("entry_id"=>$entry_id));
