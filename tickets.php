@@ -15,7 +15,7 @@ include("template/header.php"); /// Your site template header
 
 
 //Get venue ID
-$entry_id = preg_replace("/[^0-9]/", "", @$_GET['id']);
+$entry_id = preg_replace("/[^0-9]/", "", @$_GET['entry_id']);
 
 //Request data from INZU about the selected venue
 $json = file_get_contents("$api_base/booking/venue?api_key=$api_key&ticket_id=$entry_id");
