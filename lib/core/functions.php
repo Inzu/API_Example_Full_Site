@@ -80,10 +80,13 @@ function site_map( ){
 	
 		$link = page_views($navigation_item->type);
 		
-		$id=$navigation_item->id;
+		$id = $navigation_item->id;
+		
+		///Send category for store sub-menus
+		$cat = $navigation_item->category;
 		
 		if($link){
-		$navigation .= '<li><a href="'.$link.'?id='.$id.'">'.$navigation_item->title.'</a>';
+		$navigation .= '<li><a href="'.$link.'?id='.$id.'&category='.$cat.'">'.$navigation_item->title.'</a>';
 		} else {
 		$navigation .= '<li>'.$navigation_item->title;
 		}
@@ -100,9 +103,9 @@ function site_map( ){
 				$sub_link = page_views($sub_menu_item->type);
 				
 				///Send category for store sub-menus
-				$cat=$sub_menu_item->category;
+				$cat = $sub_menu_item->category;
 				
-				$navigation .= '<li><a href="'.$sub_link.'?category='.$cat.'">'.$sub_menu_item->title.'</a></li>';
+				$navigation .= '<li><a href="'.$sub_link.'?id='.$id.'&category='.$cat.'">'.$sub_menu_item->title.'</a></li>';
 			}
 			
 			$navigation .= '</ul>';
