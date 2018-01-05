@@ -18,7 +18,7 @@ require("template/template_start.php"); /// Your site template start
 
 
 //Get venue ID
-$entry_id = preg_replace("/[^0-9]/", "", @$_GET['id']);
+$entry_id = preg_replace("/[^0-9]/", "", @$_GET['entry_id']);
 
 //Request data from INZU about the selected venue
 $arguments = array("ticket_id"=>$entry_id);
