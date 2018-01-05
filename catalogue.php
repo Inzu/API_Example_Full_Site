@@ -9,7 +9,7 @@ require("template/template_start.php"); /// Your site template start
 
 
 //Get ID from right column archive list if clicked
-$entry_id = preg_replace("/[^0-9]/", "", @$_GET['id']);
+$entry_id = preg_replace("/[^0-9]/", "", @$_GET['entry_id']);
 
 /*Page Content*/
 
@@ -46,7 +46,7 @@ $date=date("M jS :: Y",$date);
 
 $archive.=<<<EOD
 <div class="archive_row">
-<div class="archive_list" ><a href="catalogue.php?id={$entry->entry_id}">{$entry->title}</a> $date</div>
+<div class="archive_list" ><a href="catalogue.php?entry_id={$entry->entry_id}">{$entry->title}</a> $date</div>
 </div>
 EOD;
 }
