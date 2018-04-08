@@ -53,37 +53,36 @@ EOD;
 ////Newsletter sign up
 
 //Get email from sign-up form if sent
-$email = preg_replace("/[^a-zA-Z0-9@._-]/", "",$_POST['email']); 
+$email = preg_replace("/[^a-zA-Z0-9@._-]/", "", @$_POST['email']); 
 
-if($email){
+if ($email) {
 
-//Send e-mail to INZU	- your newsletter key is generated in the Newsletter admin suite
-
-if (eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$",  $_POST['email'])){ /// Checks the e-mail is valid
-
-$data = array ('key' => 'be3393d40f5d5e97daab27a91ea9ftn', 'email' => $email);
-
-$data = http_build_query($data);
-$opts = array('http' =>
-    array(
-        'method'  => 'POST',
-        'header'  => 'Content-type: application/x-www-form-urlencoded',
-        'content' => $data
-    )
-);
-
-$context  = stream_context_create($opts);
-$result = file_get_contents('https://secure.inzu.net/newsletter/join.html', false, $context);
-
-
-$message = "<strong>E-mail submitted.</strong><br />Thank you for joining the mailing list.";
-
-} else {
-$message="Please submit a valid e-mail address.";
-}
+	//Check the e-mail is valid
+	if (eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$",  @$email)){ 
+	
+	//Send e-mail to Inzu to add to your mailing-list
+	$result  = INZU_POST("newsletter/subscribe", array("email"=>$email));
+	
+		if ( $result->status == "posted" ) {
+		 
+		$message = "<strong>E-mail submitted!</strong><br/>Thank you for joining the mailing list.";
+		
+		} else {
+			
+		$message = "<strong>An error occurred!</strong><br/>Please try again.";
+			
+		}
+	
+	} else {
+		
+	$message = "Please submit a valid e-mail address!";
+	
+	}
 
 } else {
-$message="Join our mailing list.";
+	
+$message = "Join our mailing list.";
+
 }
 
 echo<<<EOD
