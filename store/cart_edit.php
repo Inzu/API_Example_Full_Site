@@ -38,11 +38,11 @@ echo<<<EOD
 <input name="item_code" type="hidden" value="{$item->item_code}" />
 <table cellspacing="0" cellpadding="0" width="445" >
     <tr>
-        <td valgin="middle" width="265" >{$item->title}</td>
-        <td valgin="middle"  align="right"  width="50">{$ECOM_CURRENCY}{$item->{'price_'.$ECOM_LOC}}</td>
-        <td  width="8" align="right" valign="middle"  ></td>
-        <td valgin="middle" align="left" width="30"><input name="quantity" type="text" value="{$item->quantity}" size="2" maxlength="2" style="width:20px"></td>
-        <td valgin="middle" align="right"  >
+        <td align="left" valign="middle" width="265" >{$item->title}</td>
+        <td align="right" valign="middle" width="50">{$ECOM_CURRENCY}{$item->{'price_'.$ECOM_LOC}}</td>
+        <td align="right" valign="middle" width="8"></td>
+        <td align="left" valign="middle" width="30"><input name="quantity" type="text" value="{$item->quantity}" size="2" maxlength="2" style="width:20px"></td>
+        <td align="right" valign="middle">
         <a href="javascript:document.form_{$i}.submit();">EDIT</a>&nbsp;<a href="item_remove.php?item_code={$item->item_code}">REMOVE</a></td>
     </tr>
 </table>
@@ -55,8 +55,8 @@ EOD;
 echo<<<EOD
 <table border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td width="315" align="right" valign="middle">Total:&nbsp; {$ECOM_CURRENCY}{$totalprice}</td>
-	   <td width="8" align="right" valign="middle" ></td>
+    <td align="right" valign="middle" width="315">Total:&nbsp; {$ECOM_CURRENCY}{$totalprice}</td>
+	   <td align="right" valign="middle" width="8"></td>
     <td align="left" valign="middle"> {$item_count} Items</td>
   </tr>
 </table>
