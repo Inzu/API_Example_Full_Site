@@ -240,8 +240,8 @@ $more_releases.=<<<EOD
 <div>
 <div>
     <img src="{$product->image_thumb}" height="80" width="80"  class="shop_img" />
-    <h2>{$product->bundle_title}</h2>
-    <h4>{$product->bundle_artists}</h4>
+    <h2>{$product->title}</h2>
+    <h4>{$product->artists}</h4>
     <span class="shopDes">{$product->short_description}<br />
     <strong>{$ECOM_CURRENCY}{$product->track[0]->{'price_'.$ECOM_LOC}}</strong><br />
     <a href="music.php?cat_no={$product->cat_no}&format={$product->format}"><strong>+ view tracks</strong></a></span>
