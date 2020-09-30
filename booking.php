@@ -21,12 +21,12 @@ require("template/template_start.php"); /// Your site template start
 $entry_id = preg_replace("/[^0-9]/", "", @$_GET['entry_id']);
 
 //Request data from INZU about the selected venue
-$arguments = array("ticket_id"=>$entry_id);
+$arguments = array("venue_id"=>$entry_id);
 $inzu = INZU_GET("booking/venue", $arguments);
 
 
 //Get booking calendar script from inzu 
-$arguments = array("ticket_id"=>$entry_id, "month_auto"=>"true");
+$arguments = array("venue_id"=>$entry_id, "month_auto"=>"true");
 $inzu_date_selector = INZU_GET("js/calendar/date_selector.js", $arguments, "raw");
 
 $ECOM_LOC = ECOM_LOC;
