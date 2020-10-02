@@ -68,7 +68,7 @@ curl_close($ch);
 
 function site_map( ){
 	
-	///Create the website navigation based on your Inzu site map, this is optional.
+	// Create the website navigation based on your Inzu site map, this is optional.
 	
 	$inzu = INZU_GET("general/sitemap");
 
@@ -76,33 +76,40 @@ function site_map( ){
 
 	foreach( $inzu as $navigation_item ){
 
-	//Build the navigation
+	// Build the navigation
 	
 		$link = page_views($navigation_item->type);
 		
 		$id = $navigation_item->id;
 		
-		///Send category for store sub-menus
+		// Send category for store sub-menus
 		$cat = $navigation_item->category;
 		
 		if($link){
-		$navigation .= '<li><a href="'.$link.'?entry_id='.$id.'&category='.$cat.'">'.$navigation_item->title.'</a>';
+			
+			$navigation .= '<li><a href="'.$link.'?entry_id='.$id.'&category='.$cat.'">'.$navigation_item->title.'</a>';
+		
 		} else {
-		$navigation .= '<li>'.$navigation_item->title;
+			
+			$navigation .= '<li>'.$navigation_item->title;
+		
 		}
 
-		//If there is a 'child' element that means a sub-menu exists
+		// If there is a 'child' element that means a sub-menu exists
+		
 		if( $navigation_item->child ){
 			
 			
-			//Build the sub-menu
+			// Build the sub-menu
+			
 			$navigation .= '<ul class="sub_menu">';
 			
 			foreach( $navigation_item->child as $sub_menu_item ){
 					
 				$sub_link = page_views($sub_menu_item->type);
 				
-				///Send category for store sub-menus
+				// Send category for store sub-menus
+				
 				$cat = $sub_menu_item->category;
 				
 				$navigation .= '<li><a href="'.$sub_link.'?entry_id='.$id.'&category='.$cat.'">'.$sub_menu_item->title.'</a></li>';
