@@ -1,33 +1,40 @@
 <?php
 
+
 $pageTitle = "INZU - Edit Cart";
 
-//Load includes
-include("../lib/core/functions.php");
-include("../lib/core/config.php");  /// This is where your API Key is stored
-include("../template/template_start.php"); /// Your site template header
 
-//Page settings
+// Load Includes
+
+include("../lib/core/functions.php");
+include("../lib/core/config.php");  // This is where your API Key is stored
+include("../template/template_start.php"); // Your site template header
+
 $ECOM_LOC = ECOM_LOC;
 $ECOM_CURRENCY = ECOM_CURRENCY;
 
 require("cart.php"); /// Cart information  - requires page settings
 require("nav.php"); /// Store category navigation for right column - requires page settings
 
+
+// HTML
+
 echo<<<EOD
 <h2>Shop</h2>
 <hr/>
 EOD;
 
-//Check if there are any items in the cart - item_array is created in cart.php
+// Check if there are any items in the cart - item_array is created in cart.php
+
 if ( $item_array ) {
 
-//Request data from INZU for the items in the cart based on the item array (a list of item codes)
+// Request data from INZU for the items in the cart based on the item array (a list of item codes)
+
 $inzu = INZU_GET("store/cart", array("item_array"=>$item_array));
 
-//Create a table for each item to allow removal and quantity change
+// Create a table for each item to allow removal and quantity change
 
-$i=0;
+$i = 0;
 
 foreach ( $inzu->data as $item ) { 
 
@@ -41,8 +48,8 @@ echo<<<EOD
         <td align="left" valign="middle" width="265" >{$item->title}</td>
         <td align="right" valign="middle" width="50">{$ECOM_CURRENCY}{$item->{'price_'.$ECOM_LOC}}</td>
         <td align="right" valign="middle" width="8"></td>
-        <td align="left" valign="middle" width="30"><input name="quantity" type="text" value="{$item->quantity}" size="2" maxlength="2" style="width:20px"></td>
-        <td align="right" valign="middle">
+        <td align="left" valgin="middle" width="30"><input name="quantity" type="text" value="{$item->quantity}" size="2" maxlength="2" style="width:20px"></td>
+        <td align="right" valgin="middle">
         <a href="javascript:document.form_{$i}.submit();">EDIT</a>&nbsp;<a href="item_remove.php?item_code={$item->item_code}">REMOVE</a></td>
     </tr>
 </table>
@@ -64,7 +71,7 @@ EOD;
 
 } else {
 
-//If there are no items in the cart
+// If there are no items in the cart
 
 $item_count = "0";
 $totalprice = "0";

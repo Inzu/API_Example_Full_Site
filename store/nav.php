@@ -1,8 +1,8 @@
 <?php
 
-///Category navigation for store
+// Category navigation for store
 
-//Create the cart 
+// Create the cart 
 
 $right_col=<<<EOD
 <div class="right_col">
@@ -18,29 +18,33 @@ $right_col=<<<EOD
 EOD;
 
 
-//Request data from INZU for store category list
+// Request data from INZU for store category list
+
 $inzu = INZU_GET("store/categories");
 
 foreach ( $inzu as $entry => $sub ) { 
 
-//Music pages use a different display page
+// Music pages use a different display page
+
 if ( $entry == "Music" ) {
 	
-$page_type = "music.php";
+	$page_type = "music.php";
 
 } else {
 	
-$page_type = "store.php";
+	$page_type = "store.php";
 
 }
 
 $right_col .=<<<EOD
 <a href="{$page_type}?category=$entry">{$entry}</a><br />
 EOD;
+
 }
 
 
-///Add offer details
+// Add offer details
+
 $inzu = INZU_GET("store/offers");
 
 $right_col.=<<<EOD

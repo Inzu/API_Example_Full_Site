@@ -1,43 +1,47 @@
 <?php
 
+
 $pageTitle = "INZU - Events";
 
-//Load includes
+
+// Load Includes
+
 require("lib/core/functions.php");
-require("lib/core/config.php");  /// This is where your API Key is stored
-require("template/template_start.php"); /// Your site template start
+require("lib/core/config.php");  // This is where your API Key is stored
+require("template/template_start.php"); // Your site template start
 
 
-/*Page Content*/
+// Inputs
 
-
-//Get event ID if user has made a selection
 $entry_id = preg_replace("/[^0-9]/", "", @$_GET['entry_id']);
 
 
-//Request data from INZU for the 20 latest "Event" entries ordered by date and in ascending order
+// Request data from INZU for the 20 latest "Event" entries ordered by date and in ascending order
 
 $arguments = array("page"=>"1", "page_rows"=>"20", "order"=>"date", "order_type"=>"ASC");
 $inzu = INZU_GET("cms/events", $arguments);
 
 
-///We now begin a loop that sorts the results into either the archive list or to be displayed on the page
+// HTML
 
-$i=0;
+// We now begin a loop that sorts the results into either the archive list or to be displayed on the page
+
+$i = 0;
 
 foreach ( $inzu->data as $entry ) { 
 	
 $i++;
 
 
-//Convert date from unix time to human readable
+// Convert date from unix time to human readable
+
 $date = intval($entry->date);
 $date = date("M jS Y",$date);
 
 
-if( ($i == 1 && !$entry_id ) || ( $entry->entry_id == $entry_id ) ) { //Displays the first entry if an entry has not been selected from the archive
+if( ($i == 1 && !$entry_id ) || ( $entry->entry_id == $entry_id ) ) { // Displays the first entry if an entry has not been selected from the archive
 
-//Create booking link if there is one set and event is in the future
+// Create booking link if there is one set and event is in the future
 
 $todays_date = date("U");
 
@@ -112,17 +116,17 @@ EOD;
 
 } else {
 
-//Create archive
+// Create Archive
 
 $archive.=<<<EOD
 <div class="archive_row">
 <div class="archive_list" ><a href="events.php?entry_id={$entry->entry_id}">{$entry->title}</a> $date</div>
 </div>
 EOD;
-}
 
 }
 
+}
 
 
 $right_col=<<<EOD
@@ -130,7 +134,6 @@ $right_col=<<<EOD
 <hr/>
 $archive
 EOD;
-
 
 
 require("template/template_end.php");

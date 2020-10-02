@@ -1,34 +1,41 @@
 <?php
 
+
 $pageTitle = "INZU - Search";
 
-//Load includes
-require("lib/core/functions.php");
-require("lib/core/config.php");  /// This is where your API Key is stored
-require("template/template_start.php"); /// Your site template start
 
-/*Page Content*/
+// Load Includes
+
+require("lib/core/functions.php");
+require("lib/core/config.php");  // This is where your API Key is stored
+require("template/template_start.php"); // Your site template start
+
+
+// Inputs
 
 $search = preg_replace("/[^a-zA-Z0-9[:blank:][:space:]]/", "", @$_REQUEST['search']);
 
-//Results
+
+// Search Results
 
 $inzu = INZU_GET("functions/search", array("search"=>$search));
 
+
+// HTML
 
 foreach ( $inzu->data as $entry ) {
 
 	if( $entry->zone == "about" ) {
 		
-	$link = "about.php?";
+		$link = "about.php?";
 	
 	}else if( $entry->zone == "articles" ) {
 		
-	$link = "articles.php?entry_id=".$entry->entry_id;
+		$link = "articles.php?entry_id=".$entry->entry_id;
 	
 	}else if( $entry->zone == "news" ) {
 		
-	$link = "news.php?entry_id=".$entry->entry_id;
+		$link = "news.php?entry_id=".$entry->entry_id;
 	
 	}
 
@@ -40,6 +47,7 @@ $results.=<<<EOD
 + <a href="{$link}">View</a>
 <hr>
 EOD;
+
 }
 
 if ( !$results ) $results = "<p>Try using the phrase \"test\" to find a result.</p>";

@@ -1,39 +1,43 @@
 <?php
+	
+// Load Includes
 
-//Load includes
 require("lib/core/functions.php"); 
-require("lib/core/config.php");  /// This is where your API Key is stored
+require("lib/core/config.php");
 
-$sale = "";
+$booking_date = preg_replace("/[^0-9-]/", "", $_POST['booking_date']); // The date selected from the calendar
+$variations_amt = preg_replace("/[^0-9]/", "", $_POST['variations']); // The number of variations the selected date has
 
-$ticket_date = preg_replace("/[^0-9-]/", "", @$_POST['ticket_date']); //The date selected from the calendar
+$delimiter = "";
 
-$variations = preg_replace("/[^0-9,]/", "", @$_POST['variations']); //The variations list for the selected date
+for ( $i=0; $i < $variations_amt; $i++ ) {
 
-$variations = explode(",", $variations);
+$amt = preg_replace("/[^0-9.]/", "", @$_POST['amount_'.$i]); // The amount of bookings selected for that variation by the user
 
-foreach ( $variations as $key => $var ) {
+if ( $amt > 0 ) $sale.= $i."_".$amt.$delimiter;
 
-	$amt = preg_replace("/[^0-9.]/", "", @$_POST['amount_'.$var]); //The amount of tickets selected for that variation by the user
-	
-	if ( $amt > 0 ) $sale.= $var."_".$amt."=";
-	
-	$amt = 0;
+$delimiter = "=";
+
+$amt = 0;
 
 }
 
 
-///The forwarding URL to the INZU checkout pages
 
-//u = the public id of the INZU user
-//id = the id of the ticket venue/envent entry
-//sale = the number of tickets and variation type
-//date = the date selected for tickets
-//calendar = if not set to hide a selection calendar is displayed on the INZU checkout page
-//callback = a callback URL for a completed transaction
+/* 
+	
+Generate URL for the Inzu payment gateway
+	
+u = the public id of the Inzu account
+id = the id of the venue
+sale = the number of bookings and variation type
+date = the date selected
+calendar = if not set to hide a selection calendar is displayed on the Inzu checkout page
+callback = a callback URL for a completed transaction
 
+*/
 
-header("Location: ".PAY_URL."booking?u=1ffa420ebd31c45d5b7d073cdb011be2&id=165&sale=$sale&date=$ticket_date&calendar=hide&callback=".PAY_CALBACK."&loc=".ECOM_LOC);
+header("Location: https://payments.inzu.net/booking?u=1ffa420ebd31c45d5b7d073cdb011be2&id=165&sale=$sale&date=$booking_date&calendar=hide&callback=https://inzu.net/");
 
 
 ?>

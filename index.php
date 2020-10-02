@@ -1,19 +1,22 @@
 <?php
 	
-$pageTitle = "INZU - Home";	
+	
+$pageTitle = "Inzu - Home";	
 
-//Load includes
+
+// Load Includes
+
 require("lib/core/functions.php"); 
-require("lib/core/config.php");  /// This is where your API Key and API Password is stored
-require("template/template_start.php"); /// Your site template start
+require("lib/core/config.php");  // This is where your API Key and API Password is stored
+require("template/template_start.php"); // Your site template start
 
 
-/*Page Content*/
-
-
-//Request data from INZU for the "Home" section
+// Request data from INZU for the "Home" section
 
 $inzu = INZU_GET("/cms/home");
+
+
+// HTML
 
 echo<<<EOD
 <h2>Home</h2>
@@ -21,8 +24,7 @@ echo<<<EOD
 EOD;
 
 
-
-//Get the latest "Event" entry
+// Get the latest "Event" entry
 
 $inzu = INZU_GET("/cms/events", array("latest"=>"true"));
 
@@ -37,7 +39,8 @@ EOD;
 
 
 
-//Get the latest "video" entry
+// Get the latest "video" entry
+
 $inzu = INZU_GET("/cms/video", array("latest"=>"true"));
 
 echo<<<EOD
@@ -50,17 +53,18 @@ EOD;
 
 
 
-////Newsletter sign up
+// Newsletter Sign-up
 
-//Get email from sign-up form if sent
 $email = preg_replace("/[^a-zA-Z0-9@._-]/", "", @$_POST['email']); 
 
 if ($email) {
 
-	//Check the e-mail is valid
-	if (eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$",  @$email)){ 
+	// Check the e-mail is valid
 	
-	//Send e-mail to Inzu to add to your mailing-list
+	if ( filter_var($email, FILTER_VALIDATE_EMAIL) ){ 
+	
+	// Send e-mail to Inzu to add to your mailing-list
+	
 	$result  = INZU_POST("newsletter/subscribe", array("email"=>$email));
 	
 		if ( $result->status == "posted" ) {

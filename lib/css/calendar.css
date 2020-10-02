@@ -1,146 +1,177 @@
-
-
-/* The table that holds the calendar */
-.dpTable {
+.calendar {
+		
+	width: 268px;
 	
-	width: 248px;
-	margin: 0px;
-	padding: 0px 0px 4px 4px;
+	margin-bottom: 4px;
+	padding: 2px 6px 6px 6px;
+	box-sizing: border-box;
+		
+	font-family:  Arial, Helvetica, sans-serif;
+	font-size: 12px;
 	text-align: center;
-	color: #3B3A38;
-
-}
-
-
-
-/* The table cell that holds the name of the month and the year */
-.dpTitleTD {
-	
-	width: 100px;
-	height: 60px;
-
-}
-
-.dpTitleText {
-	
-	font-size: 17px;
-	color: #3B3A38;
-	
-}
-
-
-
-/* All the table cells that are part of the calendar grid e.g days, names of days, and days that don't exist for that month.*/
-.dpTable td {
-	
-	font-size: 14px;
-	width: 24px;
-	height: 14px;
-	padding: 3px;
-	
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
+	color:#333333;
+	background-color: #d0d0d0;
 	border-radius: 3px;
-	
-}
-
-
-
-/* A table cell that holds the names of days of the week (Mo, Tu, We, etc.) */
-.dpDayTD {
-	
-	background-color: #D4D2FD;
-	color: #000000;
-	
-}
-
-
-
-/* The first days of the week that don't exist for the selected month */
-.dpLeadingTD {
-	
-	border: 1px solid #AEAEAE;
-
-}
-
-
-/* Days that exist for the selected month*/
-.dpTD {
-	
-	border: 1px solid #B476B0;
-	cursor: pointer;
-	 
-}
-
-
-
-/* The last days of the week that don't exist for the selected month */
-.dpTrailingTD {
-	
-	border: 1px solid #FFFFFF;
-
-}
-
-
-
-/* The table cell that holds todays day  */
-.dpDayHighlightTD {
-	
-	background-color: #e0e0e0;
 	border: 1px solid #AAAAAA;
-	cursor: pointer;
-	color: #000000;
+
+	
+}
+
+
+.calendar  thead  tr {
+
+	height: 28px;	
+
+}	
+
+.calendar  tfoot  tr {
+
+	height: 28px;	
+
+}	
+
+/* Title */
+
+.calendar .title {
+	
+	font-size: 13px;
+	color: #333333;
 	font-weight: bold;
-	
-}
 
-
-/* The table cell that holds the button to return to the current month  */
-.dpThisMonthButtonTD {
-	
-	margin-top: 2px;
-	
 }
 
 
 
+/* (Mo, Tu, We, etc.) */
 
-/* STYLES FOR TICKET AVAILABILITY */
+.calendar .dayName {
+	
+	font-size: 11px;
+	background-color: #CCCCCC;
+	border: 1px solid #999999;
+	color: #000000;
+	padding:3px;
+	width: 26px;
+
+}
 
 
-/* A table cell that holds a date that is available for booking. */
+/* Empty */
 
-.dpDayAvailableTD {
+.calendar .empty {
+	
+	border: 1px solid #999999;
+
+}
+
+
+/* Day cell */
+
+.calendar .dayCell {
+	
+	font-size: 11px;
+	border: 1px solid #969696;
+	padding: 3px;
+	border-radius: 2px;
+	background-color: #EAEAEA;
+	cursor: pointer;
+	width: 14px;
+
+}
+
+
+	.calendar .dayCell:hover {
+		
+		background-color: #aca998;
+		
+	}
+
+
+/* Today */
+
+.calendar .today {
+	
+	background-color: #FFE920;
+	border: 1px solid #AAAAAA;
+	
+}
+
+
+/* Selected */
+
+.calendar .selected, .calendar .available{
+	
+	background-color: #BEBBBB;
+	font-weight: bold;
+
+}
+
+.calendar .selected {
+	
+	background-color:#8f8d8d;
+	border: 1px solid #6f6f6f;
 	
 	cursor: pointer;
-	color: #FFFFFF;
-	background-color: #269AEC;
-	border: 1px solid #269AEC;
 
 }
 
 
-/* A table cell that is selected and the rollover state of all existing dates */
 
-.dpTDselected, .dpDayAvailableTD:hover  {
-	
-	border: #999999 1px solid !important;
-	color: #000000;
-	background: #90DBF5;
-	cursor: pointer; 
+/* Controls */
+
+.calendar .nav img {
+
+	width: 19px;
+	cursor: pointer;
 	
 }
 
+.calendar .footer div {
+	
+	display: inline-block;
+	
+	padding: 3px;
+	margin-top: 4px;
+	
+	border-radius: 2px;
+	border: 1px solid #969696;
+	
+	background: linear-gradient(#dcdcdc 0%, #ffffff 100%);
+	
+	text-align: center;
+	
+	cursor: pointer;
+
+}			
+	
+	.calendar .footer div:hover {
+		
+		background: linear-gradient(#d3d3d3 0%, #ffffff 100%);
+	
+	}			
+
+.calendar .footer .thisMonth {
+	
+	width: 80px;
+	margin-right: 2px;
+
+}		
+
+.calendar .footer .close {
+	
+	width: 48px;
+
+}		
 
 
 
+/* sold out days */
 
-/* Sold out days */
-[data-sale="0"] {
+[data-sale="0"]{
 	
 	border: 1px solid #808080 !important;
 	background: #808080;
-	color: #CCCCCC;
+	color:#CCCCCC;
 
 }
 

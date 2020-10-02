@@ -1,17 +1,22 @@
 <?php
 
+
 $pageTitle = "INZU - Links";
 
-//Load includes
+
+// Load Includes
+
 require("lib/core/functions.php");
-require("lib/core/config.php");  /// This is where your API Key is stored
-require("template/template_start.php"); /// Your site template start
+require("lib/core/config.php");  // This is where your API Key is stored
+require("template/template_start.php"); // Your site template start
 
-/*Page Content*/
 
-//Request data from INZU for the "Links" archive
+// Request data from INZU for the "Links" archive
+
 $inzu = INZU_GET("cms/links");
 
+
+// HTML
 
 echo<<<EOD
 <h2>Links</h2>

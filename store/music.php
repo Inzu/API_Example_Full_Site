@@ -1,46 +1,58 @@
 <?php
 
-session_start();
 
 $pageTitle = "INZU - Music Store";
 
-//Load includes
-require("../lib/core/functions.php");
-require("../lib/core/config.php");  /// This is where your API Key is stored 
-require("../template/template_start.php"); /// Your site template header
+session_start();
 
-/*Page Settings*/
+
+// Load Includes
+
+require("../lib/core/functions.php");
+require("../lib/core/config.php");  // This is where your API Key is stored 
+require("../template/template_start.php"); // Your site template header
+
+
 $ECOM_LOC = ECOM_LOC;
 $ECOM_CURRENCY = ECOM_CURRENCY;
 
-require("cart.php"); /// Cart information  - requires page settings
-require("nav.php"); /// Store category navigation for right column - requires page settings
+require("cart.php"); // Cart information  - requires page settings
+require("nav.php"); // Store category navigation for right column - requires page settings
 
 
-//We store information such as format and cat no is session variables so that when an item is added 
-//the correct product is displayed after the user is redirected back to the shop.
+/*
+	
+We store information such as format and cat no is session variables so that when an item is added 
+the correct product is displayed after the user is redirected back to the shop.
 
-//Get the format selected by the user and store in session variable 
+*/
+
+
+// Get the format selected by the user and store in session variable 
+
 $format = preg_replace("/[^a-zA-Z0-9_]/", "", @$_REQUEST['format']);
 
 if ( $format ) $_SESSION['format'] = $format;
 
 $format = @$_SESSION['format'];
 
-//Cat no refers to a release's catalogue number - this is the same for all the formats in a release
+// Cat no refers to a release's catalogue number - this is the same for all the formats in a release
+
 $cat_no = preg_replace("/[^a-zA-Z0-9_]/", "", @$_REQUEST['cat_no']);
+
 if ( $cat_no ) $_SESSION['cat_no'] = $cat_no;
 
-//Set redirect back to music store after adding item
+// Set redirect back to music store after adding item
+
 $_SESSION['page_state'] = "music.php";
 
 
-/*Page Content*/
+// HTML
 
 echo<<<EOD
 <script type="text/javascript">
 
-//HTML 5 audio play button
+// HTML 5 audio play button
 
 var playSound = {
 	
@@ -89,10 +101,10 @@ var playSound = {
 EOD;
 
 
-//Featured release
+// Featured Release
 
 
-//If a release has been selected use "cat no" to get the data from INZU otherwise just select the latest release
+// If a release has been selected use "cat no" to get the data from INZU otherwise just select the latest release
 
 if ( $cat_no ) {
 	
@@ -107,7 +119,9 @@ $inzu = INZU_GET("store/music", array("latest"=>"true", "format"=>$format));
 
 
 /*
+	
 Format list - Get the list of formats available for this release and make links to change the format whilst passing the cat no in the URL.
+
 */
 
 $format_array = explode(',', $inzu->data[0]->format_array); /// Turn comma separated format list into an array
@@ -120,17 +134,18 @@ EOD;
 
 }
 
-//Now create track list for the featured release and bundle information
+// Now create track list for the featured release and bundle information
 
 $i=0;
 
 foreach ( $inzu->data[0]->track as $track ) { 
 
-//The track marked as "bundle" is used to retrieve information such as bundle price and bundle title
+// The track marked as "bundle" is used to retrieve information such as bundle price and bundle title
 
 if ( $track->number == "bundle" ) {
 
-//Create HTML for featured release bundle information
+// Create HTML for featured release bundle information
+
 $featured=<<<EOD
 <div>
     <img src="{$inzu->data[0]->image}" height="140" width="140"  class="shop_img" />
@@ -148,10 +163,10 @@ EOD;
 
 
 
-//Track list for featured release
+// Track list for featured release
 
 
-//If a preview is available attach a Flash preview button
+// If a preview is available attach a Flash preview button
 
 if ( $track->preview != "" ) {
 	
@@ -175,11 +190,11 @@ $audio_button = NULL;
 }
 
 
-//Build track list leaving out the bundle
+// Build track list leaving out the bundle
 
 if ( $track->number != "bundle" ) {
 
-//Only include buy button and price for each track if format is Digital
+// Only include buy button and price for each track if format is Digital
 
 if ( $inzu->data[0]->format == "Digital" ) {
 
@@ -205,17 +220,19 @@ EOD;
 
 
 }
+
 }
 
-//End featured release
+// End featured release
 
-//List of first 16 available releases, only displaying bundle information
+// List of first 16 available releases, only displaying bundle information
 
-$inzu = INZU_GET("store/music", array("page"=>"1", "page_rows"=>"16", "release"=>"true"));
+$inzu = INZU_GET("store/music", array("release"=>"true"));
 	
 foreach ( $inzu->data as $product ) { 
 
-//Create format links
+// Create format links
+
 $format_links = NULL;
 
 $format_array = explode(',', $product->format_array);
@@ -258,7 +275,7 @@ EOD;
 }
 
 
-//Collate all data
+// Collate all data
 
 echo<<<EOD
         $featured

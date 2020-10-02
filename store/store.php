@@ -1,25 +1,27 @@
 <?php
 
-$pageTitle = "INZU - Store";
 
-//Load includes
-require("../lib/core/functions.php");
-require("../lib/core/config.php");  /// This is where your API Key is stored
-require("../template/template_start.php"); /// Your site template header
+$pageTitle = "INZU - Store";
 
 session_start();
 
-/*Page Settings*/
+
+// Load Includes
+
+require("../lib/core/functions.php");
+require("../lib/core/config.php");  // This is where your API Key is stored
+require("../template/template_start.php"); // Your site template header
+
 $ECOM_LOC = ECOM_LOC;
 $ECOM_CURRENCY = ECOM_CURRENCY;
 
-require("cart.php"); /// Cart information  - requires page settings
-require("nav.php"); /// Store category navigation for right column - requires page settings
+require("cart.php"); // Cart information  - requires page settings
+require("nav.php"); // Store category navigation for right column - requires page settings
 
 $_SESSION['page_state'] = "store.php";
 
 
-//Get the category selected by the user and store in session variable 
+// Get the category selected by the user and store in session variable 
 
 $category = preg_replace("/[^a-zA-Z0-9[:blank:][:space:]_]/", "", @$_REQUEST['category']);
 
@@ -28,17 +30,23 @@ $category = @$_SESSION['category'];
 
 if ( $category == "Music" ) header("Location: music.php");
 
-/*Page Content*/
+
+// HTML
 
 echo<<<EOD
 <h2>Store</h2>
 <hr/>
 EOD;
 
-//Request data from INZU for the selected category
-$inzu = INZU_GET("store/product", array("category"=>$category));
 
-//A loop for each product
+// Request data from INZU for the selected category
+
+$inzu = INZU_GET("store/product", array("category"=>$category));
+$inzu = INZU_GET("store/product", array("item_array"=>5297), "echo");
+
+
+// A loop for each product
+
 $i = 0;
 
 foreach ( $inzu->data as $product ) { 
@@ -50,14 +58,15 @@ $price = NULL;
 
 $title = $product->title;
 
-//A second loop if the product has variations
+// A second loop if the product has variations
 
 if ( !$product->item_code ) {
 	
 	foreach ( $product->item as $item ) { 
 		
-		///Build variations drop down
-		if( $item->variation_name != "" ) {
+		// Build variations drop down
+		
+		if ( $item->variation_name != "" ) {
 			
 		$variations .= "<option value=\"{$item->item_code},{$item->{'price_'.$ECOM_LOC}}\">{$item->variation_name} - {$ECOM_CURRENCY}{$item->{'price_'.$ECOM_LOC}}</option>";
 		
@@ -73,7 +82,7 @@ EOD;
 
 $title = $item->title;
 
-//End variations
+
 
 } else {
 	
@@ -86,7 +95,7 @@ EOD;
 }
 
 
-//Item display
+// Item Display
 
 echo<<<EOD
 <div>

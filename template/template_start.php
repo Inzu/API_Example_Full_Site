@@ -1,7 +1,9 @@
 <?php
 
 /*
+
 This is an example website template header file. You may compeltely change this to suit your needs.
+
 */	
 
 $navigation = site_map();
