@@ -1,7 +1,7 @@
 <?php
 	
 	
-$pageTitle = "INZU - Gallery";
+$pageTitle = "Inzu - Gallery";
 
 
 // Load Includes
@@ -19,7 +19,7 @@ $img_id = preg_replace("/[^0-9]/", "",@ $_GET['img_id']); // Get gallery image I
 if ( !$img_id ) $img_id = 0;
 
 
-// Request data from INZU for the 10 latest "Gallery" entries ordered by date and in ascending order
+// Request data from Inzu for the 10 latest "Gallery" entries ordered by date and in ascending order
 
 $arguments = array("page"=>"1", "page_rows"=>"10", "order"=>"date", "order_type"=>"ASC");
 $inzu = INZU_GET("cms/gallery", $arguments);

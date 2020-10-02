@@ -1,10 +1,10 @@
 
 /*
 \---------------------------------------------------------------------------/
-| INZU API                                                                  |
+| Inzu API                                                                  |
 | ======================                                                    |
 |                                                                           |
-| Copyright (c) 2012 INZU.net                                               |
+| Copyright (c) 2012 Inzu.net                                               |
 | For contact details, see: http://www.inzu.net                             |
 |                                                                           |
 | This program is free software; you can redistribute it and/or modify      |
@@ -43,7 +43,7 @@ INSTALLATION
 
 2. Load the index.php file in your browser.
 
-You should now see content from the INZU testing environment.
+You should now see content from the Inzu testing environment.
 
 
 
@@ -65,7 +65,7 @@ The root folder contains all of the sites page views excluding the store.
 All the e-commerce files for a regular store, shopping cart and music store are located here.
 
 
-For more information on the INZU API and to reference every API feed please visit http://developers.inzu.net
+For more information on the Inzu API and to reference every API feed please visit http://developers.inzu.net
 or contact support@inzu.net.
 
 

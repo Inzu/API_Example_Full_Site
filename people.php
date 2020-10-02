@@ -1,7 +1,7 @@
 <?php
 
 
-$pageTitle = "INZU - People";
+$pageTitle = "Inzu - People";
 
 
 // Load Includes
@@ -16,7 +16,7 @@ require("template/template_start.php"); // Your site template start
 $entry_id = preg_replace("/[^0-9]/", "", @$_GET['entry_id']);
 
 
-// Request data from INZU from the "People" section
+// Request data from Inzu from the "People" section
 
 $inzu = INZU_GET("cms/people", array("entry_id"=>$entry_id));
 

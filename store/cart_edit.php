@@ -1,7 +1,7 @@
 <?php
 
 
-$pageTitle = "INZU - Edit Cart";
+$pageTitle = "Inzu - Edit Cart";
 
 
 // Load Includes
@@ -28,7 +28,7 @@ EOD;
 
 if ( $item_array ) {
 
-// Request data from INZU for the items in the cart based on the item array (a list of item codes)
+// Request data from Inzu for the items in the cart based on the item array (a list of item codes)
 
 $inzu = INZU_GET("store/cart", array("item_array"=>$item_array));
 

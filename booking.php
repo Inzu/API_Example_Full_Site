@@ -1,7 +1,7 @@
 <?php
 
 
-$pageTitle = "INZU - Tickets";
+$pageTitle = "Inzu - Tickets";
 
 
 // Load Includes
@@ -24,7 +24,7 @@ require("template/template_start.php"); // Your site template start
 $entry_id = preg_replace("/[^0-9]/", "", @$_GET['entry_id']);
 
 
-// Request data from INZU about the selected venue
+// Request data from Inzu about the selected venue
 
 $arguments = array("venue_id"=>$entry_id);
 $inzu = INZU_GET("booking/venue", $arguments);

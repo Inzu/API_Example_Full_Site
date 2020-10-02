@@ -1,7 +1,7 @@
 <?php
 
 
-$pageTitle = "INZU - Contact";
+$pageTitle = "Inzu - Contact";
 
 
 // Load Includes
@@ -11,7 +11,7 @@ require("lib/core/config.php");  // This is where your API Key is stored
 require("template/template_start.php"); // Your site template start
 
 
-// Request data from INZU from the "Contact" section
+// Request data from Inzu from the "Contact" section
 
 $inzu = INZU_GET("cms/contact");
 

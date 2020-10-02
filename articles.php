@@ -1,7 +1,7 @@
 <?php
 
 
-$pageTitle = "INZU - Articles";
+$pageTitle = "Inzu - Articles";
 
 
 // Load Includes
@@ -16,7 +16,7 @@ require("template/template_start.php"); // Your site template start
 $entry_id = preg_replace("/[^0-9]/", "", @$_GET['entry_id']);
 
 
-// Request data from INZU for the 32 latest "Article" entries ordered by date and in ascending order
+// Request data from Inzu for the 32 latest "Article" entries ordered by date and in ascending order
 
 $arguments = array("page"=>"1", "page_rows"=>"32", "order"=>"date", "order_type"=>"ASC");
 $inzu = INZU_GET("cms/articles", $arguments);

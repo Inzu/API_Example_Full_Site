@@ -18,7 +18,7 @@ $right_col=<<<EOD
 EOD;
 
 
-// Request data from INZU for store category list
+// Request data from Inzu for store category list
 
 $inzu = INZU_GET("store/categories");
 

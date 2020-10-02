@@ -1,7 +1,7 @@
 <?php
 
 
-$pageTitle = "INZU - Catalogue";
+$pageTitle = "Inzu - Catalogue";
 
 
 // Load Includes
@@ -16,7 +16,7 @@ require("template/template_start.php"); /// Your site template start
 $entry_id = preg_replace("/[^0-9]/", "", @$_GET['entry_id']);
 
 
-// Request data from INZU for the catalogue archive
+// Request data from Inzu for the catalogue archive
 
 $inzu = INZU_GET("cms/catalogue");
 

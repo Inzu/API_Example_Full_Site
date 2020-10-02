@@ -1,7 +1,7 @@
 <?php
 
 
-$pageTitle = "INZU - Store";
+$pageTitle = "Inzu - Store";
 
 session_start();
 
@@ -39,7 +39,7 @@ echo<<<EOD
 EOD;
 
 
-// Request data from INZU for the selected category
+// Request data from Inzu for the selected category
 
 $inzu = INZU_GET("store/product", array("category"=>$category));
 $inzu = INZU_GET("store/product", array("item_array"=>5297), "echo");

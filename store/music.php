@@ -1,7 +1,7 @@
 <?php
 
 
-$pageTitle = "INZU - Music Store";
+$pageTitle = "Inzu - Music Store";
 
 session_start();
 
@@ -104,7 +104,7 @@ EOD;
 // Featured Release
 
 
-// If a release has been selected use "cat no" to get the data from INZU otherwise just select the latest release
+// If a release has been selected use "cat no" to get the data from Inzu otherwise just select the latest release
 
 if ( $cat_no ) {
 	

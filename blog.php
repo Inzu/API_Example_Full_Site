@@ -1,7 +1,7 @@
 <?php
 
 
-$pageTitle = "INZU - Blog";
+$pageTitle = "Inzu - Blog";
 
 
 // Load Includes
@@ -16,7 +16,7 @@ require("template/template_start.php"); // Your site template start
 $entry_id = preg_replace("/[^0-9]/", "", @$_GET['entry_id']);
 
 
-// Request data from INZU for the 32 latest "Blog" entries from the category set in the sitemap ordered by date and in ascending order.
+// Request data from Inzu for the 32 latest "Blog" entries from the category set in the sitemap ordered by date and in ascending order.
 
 $category = preg_replace("/[^a-zA-Z0-9]/", "", @$_GET['category']);
 

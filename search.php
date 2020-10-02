@@ -1,7 +1,7 @@
 <?php
 
 
-$pageTitle = "INZU - Search";
+$pageTitle = "Inzu - Search";
 
 
 // Load Includes
