@@ -1,13 +1,11 @@
 <?php
 
-
 session_start();
-
 
 // Inputs
 
 $item_code = preg_replace("/[^0-9]/", "", @$_GET['item_code']);
-$cart = preg_replace("/[^a-z0-9,{};:\".]/", "", @$_COOKIE["cart"]);
+$cart = preg_replace("/[^a-z0-9,{};:\".]/", "", @$_COOKIE['cart']);
 
 $cart_arr = unserialize($cart);
 
@@ -29,8 +27,6 @@ if ( $count == 0 ) {
 
 }
 
-
 header("Location: cart_edit.php");
-
 
 ?>

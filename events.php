@@ -1,8 +1,6 @@
 <?php
 
-
 $pageTitle = "Inzu - Events";
-
 
 // Load Includes
 
@@ -10,17 +8,14 @@ require("lib/core/functions.php");
 require("lib/core/config.php");  // This is where your API Key is stored
 require("template/template_start.php"); // Your site template start
 
-
 // Inputs
 
 $entry_id = preg_replace("/[^0-9]/", "", @$_GET['entry_id']);
-
 
 // Request data from Inzu for the 20 latest "Event" entries ordered by date and in ascending order
 
 $arguments = array("page"=>"1", "page_rows"=>"20", "order"=>"date", "order_type"=>"ASC");
 $inzu = INZU_GET("cms/events", $arguments);
-
 
 // HTML
 
@@ -32,15 +27,12 @@ foreach ( $inzu->data as $entry ) {
 	
 $i++;
 
-
 // Convert date from unix time to human readable
 
 $date = intval($entry->date);
 $date = date("M jS Y",$date);
 
-
 if( ($i == 1 && !$entry_id ) || ( $entry->entry_id == $entry_id ) ) { // Displays the first entry if an entry has not been selected from the archive
-
 // Create booking link if there is one set and event is in the future
 
 $todays_date = date("U");
@@ -55,18 +47,16 @@ $book = NULL;
 
 }
 
-
 echo<<<EOD
 <h2>EVENTS</h2>
 <hr/>
-<img src="{$entry->image}" width="480" />
+<img src="{$entry->image}" width="480"/>
 <h2>{$entry->title} - $date</h2>
 <p class="article">{$entry->description}$book</p>
 <hr/>
 <h2>Date</h2>
 <span class="main_body">$date</span>
 EOD;
-
 
 if ( $entry->venue != "" ) {
 	
@@ -108,19 +98,19 @@ if ( $entry->review != "" ) {
 	
 echo<<<EOD
 <h2>Review</h2>
-<hr/><div class="main_body">{$entry->review}</div>
+<hr/>
+<div class="main_body">{$entry->review}</div>
 EOD;
 
 }
 
-
 } else {
-
+	
 // Create Archive
 
 $archive.=<<<EOD
 <div class="archive_row">
-<div class="archive_list" ><a href="events.php?entry_id={$entry->entry_id}">{$entry->title}</a> $date</div>
+	<div class="archive_list" ><a href="events.php?entry_id={$entry->entry_id}">{$entry->title}</a> $date</div>
 </div>
 EOD;
 
@@ -128,15 +118,12 @@ EOD;
 
 }
 
-
 $right_col=<<<EOD
 <h2>Events</h2>
 <hr/>
 $archive
 EOD;
 
-
 require("template/template_end.php");
-
 
 ?>

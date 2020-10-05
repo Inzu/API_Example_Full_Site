@@ -1,10 +1,8 @@
 <?php
 
-
 $pageTitle = "Inzu - Store";
 
 session_start();
-
 
 // Load Includes
 
@@ -20,7 +18,6 @@ require("nav.php"); // Store category navigation for right column - requires pag
 
 $_SESSION['page_state'] = "store.php";
 
-
 // Get the category selected by the user and store in session variable 
 
 $category = preg_replace("/[^a-zA-Z0-9[:blank:][:space:]_]/", "", @$_REQUEST['category']);
@@ -30,7 +27,6 @@ $category = @$_SESSION['category'];
 
 if ( $category == "Music" ) header("Location: music.php");
 
-
 // HTML
 
 echo<<<EOD
@@ -38,12 +34,10 @@ echo<<<EOD
 <hr/>
 EOD;
 
-
 // Request data from Inzu for the selected category
 
 $inzu = INZU_GET("store/product", array("category"=>$category));
 $inzu = INZU_GET("store/product", array("item_array"=>5297), "echo");
-
 
 // A loop for each product
 
@@ -82,18 +76,15 @@ EOD;
 
 $title = $item->title;
 
-
-
 } else {
 	
 $price=<<<EOD
-<input name="item_code" type="hidden" value="{$product->item_code}" />
-<input name="price" type="hidden" value="{$product->{'price_'.$ECOM_LOC}}" />
+<input name="item_code" type="hidden" value="{$product->item_code}"/>
+<input name="price" type="hidden" value="{$product->{'price_'.$ECOM_LOC}}"/>
 {$ECOM_CURRENCY}{$product->{'price_'.$ECOM_LOC}}
 EOD;
 
 }
-
 
 // Item Display
 
@@ -101,20 +92,18 @@ echo<<<EOD
 <div>
     <form action="item_add.php" method="post" name="form_main">
     <div>
-        <img src="{$product->image_thumb}" height="80" width="80"  class="shop_img"  border="0" />
+        <img src="{$product->image_thumb}" height="80" width="80"  class="shop_img"  border="0"/>
         <h4>{$title}</h4>
-        <span class="shopDes" >{$product->description}</span><br>
+        <span class="shopDes" >{$product->description}</span><br/>
         $price
     </div>
-    <input type="submit" value="Buy"  />
+    <input type="submit" value="Buy" />
     <hr/>
     </form>
 </div>
 EOD;
 
-
 }
-
 
 if ( $i < 1 ) {
 	

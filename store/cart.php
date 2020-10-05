@@ -1,6 +1,5 @@
 <?php
 
-
 // Get cart cookie
 
 $cart = preg_replace("/[^a-z0-9,{};:\".]/", "", @$_COOKIE["cart"]);
@@ -13,7 +12,7 @@ if ( $cart ) {
 	
 	$cart_arr = unserialize($cart);
 	
-	$pay = "https://payments.inzu.net/?item_code"; // Base checkout url
+	$pay = "https://payments.inzu.net/?item_code"; // Base checkout URL
 	
 	$item_count = 0;
 	$totalprice = 0;
@@ -25,7 +24,7 @@ if ( $cart ) {
 	$item_count += $cart_arr[$item]['quantity'];
 	$totalprice += $cart_arr[$item]['price'] * $cart_arr[$item]['quantity'];
 	
-		for ( $i=0; $i < $cart_arr[$item]['quantity']; $i++) {
+		for ( $i = 0; $i < $cart_arr[$item]['quantity']; $i++) {
 			
 		$pay .= "=".$item;
 		
@@ -34,7 +33,6 @@ if ( $cart ) {
 		}
 	
 	}
-	
 	
 	$item_array = implode(",", $item_array);
 	

@@ -24,7 +24,6 @@
 */
 
 
-
 FOREWORD
 
 The purpose of this code is to illustrate how an Inzu website can be built using HTML, CSS and PHP. 
@@ -67,6 +66,3 @@ All the e-commerce files for a regular store, shopping cart and music store are 
 
 For more information on the Inzu API and to reference every API feed please visit http://developers.inzu.net
 or contact support@inzu.net.
-
-
-

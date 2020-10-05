@@ -1,4 +1,4 @@
-/*////////MAIN SHELL////////*/
+/*//MAIN SHELL//*/
 
 body {
 	
@@ -117,7 +117,6 @@ p {
 		
 }
 
-
 #central_col {
 	
 	float: left;
@@ -134,7 +133,6 @@ p {
 
 }
 
-
 #right_col {
 	
 	float: left;
@@ -144,8 +142,6 @@ p {
 	
 }
 
-
-
 #left_col {
 	
 	float: left;
@@ -154,8 +150,6 @@ p {
 	margin-right: 5px;
 	
 }
-
-
 
 #nav_main {
 	
@@ -194,14 +188,13 @@ p {
  
 }
 
-
 #nav_main ul ul li {
 	
 	margin-bottom: 0px;
  
 }
 
-/*/////FORMATTING & LAYOUT/////*/
+/*//FORMATTING & LAYOUT//*/
 
 
 .page_element {
@@ -213,7 +206,7 @@ p {
 }
 
 
-/*////////RIGHT COL////////*/
+/*//RIGHT COL//*/
 
 .inzu_feed_text {
 	
@@ -225,11 +218,11 @@ p {
 	
 }
 
-.inzu_feed_text a {
+	.inzu_feed_text a {
+		
+		font-size: 12px;
 	
-	font-size: 12px;
-
-}
+	}
 
 .inzu_feed_image {
 	
@@ -245,8 +238,6 @@ p {
 	color: #666666;
 	
 }
-
-
 
 .archive_row {
 		
@@ -268,9 +259,7 @@ p {
 	
 }
 
-
-
-/*////////TEXT STYLES////////*/
+/*//TEXT STYLES//*/
 
 .main_body {
 	
@@ -280,7 +269,6 @@ p {
 	
 }
 
-
 .article {
 	
 	margin: 0px;
@@ -288,10 +276,7 @@ p {
 
 }
 
-
-
-/*////////SHOP////////*/
-
+/*//SHOP//*/
 
 .shopHeading {
 	
@@ -299,7 +284,6 @@ p {
 	line-height: 18px;
 	
 }
-
 
 .shopDes {
 	
@@ -309,16 +293,16 @@ p {
 	
 }
 
-.shopDes a:link {
+	.shopDes a:link {
+		
+		color: #54ddf0;
+		
+	}
 	
-	color: #54ddf0;
-	
-}
-
-.shopDes a:hover {
-	
-	color: #000000;
-}
+	.shopDes a:hover {
+		
+		color: #000000;
+	}
 
 .shopPriceFeatured {
 		
@@ -327,7 +311,6 @@ p {
 	text-align: right;
 
 }
-
 
 .shop_img {
 	
@@ -358,8 +341,7 @@ p {
 .buy_button a:hover { text-decoration: none; color:#330000; }
 .buy_button a:active { text-decoration: none; color: #FFFFFF; }
 
-
-/*////////GRAPHIC ELEMENTS////////*/
+/*//GRAPHIC ELEMENTS//*/
 
 .mask {
 	
@@ -371,37 +353,37 @@ p {
 
 }
 
-.mask a { 
+	.mask a { 
+		    
+	    height: 54px;     
+	    display: block;     
+	    width: 54px;
 	    
-    height: 54px;     
-    display: block;     
-    width: 54px;
-    
-}
+	}
 
-.mask a:hover, 
-.mask a.active,
-.mask a:active { 
-	    
-    border: 2px solid #c1c1c1;     
-    width: 54px;     
-    height: 54px;     
-    overflow:hidden; 
-    
-}
+		.mask a:hover, 
+		.mask a.active,
+		.mask a:active { 
+			    
+		    border: 2px solid #c1c1c1;     
+		    width: 54px;     
+		    height: 54px;     
+		    overflow:hidden; 
+		    
+		}
+		
+		.mask a:hover img, 
+		.mask a.active img,
+		.mask a:active img {  
+			    
+		    margin:0px 0px 0px 0px; 
+		    
+		}
 
-.mask a:hover img, 
-.mask a.active img,
-.mask a:active img {  
-	    
-    margin:0px 0px 0px 0px; 
-    
-}
-
-.mask img {
-	
-    border: 0px;
-	position: absolute;
-	clip: rect(0px 54px 54px 0px);
-	
-}
+	.mask img {
+		
+	    border: 0px;
+		position: absolute;
+		clip: rect(0px 54px 54px 0px);
+		
+	}

@@ -1,8 +1,6 @@
 <?php
 
-
 $pageTitle = "Inzu - Edit Cart";
-
 
 // Load Includes
 
@@ -13,9 +11,8 @@ include("../template/template_start.php"); // Your site template header
 $ECOM_LOC = ECOM_LOC;
 $ECOM_CURRENCY = ECOM_CURRENCY;
 
-require("cart.php"); /// Cart information  - requires page settings
-require("nav.php"); /// Store category navigation for right column - requires page settings
-
+require("cart.php"); // Cart information  - requires page settings
+require("nav.php"); // Store category navigation for right column - requires page settings
 
 // HTML
 
@@ -27,12 +24,10 @@ EOD;
 // Check if there are any items in the cart - item_array is created in cart.php
 
 if ( $item_array ) {
-
+	
 // Request data from Inzu for the items in the cart based on the item array (a list of item codes)
 
 $inzu = INZU_GET("store/cart", array("item_array"=>$item_array));
-
-// Create a table for each item to allow removal and quantity change
 
 $i = 0;
 
@@ -42,17 +37,17 @@ $i++;
 
 echo<<<EOD
 <form  name="form_{$i}" id="form_main" method="post" action="item_quantity.php"  style="margin: 0px; padding: 0px;">
-<input name="item_code" type="hidden" value="{$item->item_code}" />
-<table cellspacing="0" cellpadding="0" width="445" >
-    <tr>
-        <td align="left" valign="middle" width="265" >{$item->title}</td>
-        <td align="right" valign="middle" width="50">{$ECOM_CURRENCY}{$item->{'price_'.$ECOM_LOC}}</td>
-        <td align="right" valign="middle" width="8"></td>
-        <td align="left" valgin="middle" width="30"><input name="quantity" type="text" value="{$item->quantity}" size="2" maxlength="2" style="width:20px"></td>
-        <td align="right" valgin="middle">
-        <a href="javascript:document.form_{$i}.submit();">EDIT</a>&nbsp;<a href="item_remove.php?item_code={$item->item_code}">REMOVE</a></td>
-    </tr>
-</table>
+	<input name="item_code" type="hidden" value="{$item->item_code}"/>
+	<table cellspacing="0" cellpadding="0" width="445">
+	    <tr>
+	        <td align="left" valign="middle" width="265">{$item->title}</td>
+	        <td align="right" valign="middle" width="50">{$ECOM_CURRENCY}{$item->{'price_'.$ECOM_LOC}}</td>
+	        <td align="right" valign="middle" width="8"></td>
+	        <td align="left" valgin="middle" width="30"><input name="quantity" type="text" value="{$item->quantity}" size="2" maxlength="2" style="width:20px"></td>
+	        <td align="right" valgin="middle">
+	        <a href="javascript:document.form_{$i}.submit();">EDIT</a>&nbsp;<a href="item_remove.php?item_code={$item->item_code}">REMOVE</a></td>
+	    </tr>
+	</table>
 </form>
 <hr/>
 EOD;
@@ -83,6 +78,5 @@ echo "<div>You have no items in your cart.</div>";
 $totalprice = number_format($totalprice, 2, '.', ',');
 
 include("../template/template_end.php"); 
-
 
 ?>

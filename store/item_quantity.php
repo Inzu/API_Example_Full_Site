@@ -1,8 +1,6 @@
 <?php
 
-
 session_start();
-
 
 // Inputs
 
@@ -12,7 +10,6 @@ $quantity = preg_replace("/[^0-9]/", "", @$_REQUEST['quantity']);
 $cart = preg_replace("/[^a-z0-9,{};:\".]/", "", @$_COOKIE["cart"]);
 $cart = unserialize($cart);
 
-
 // Increase Quantity
 
 foreach ( $cart as $item => $val ) {
@@ -21,11 +18,9 @@ foreach ( $cart as $item => $val ) {
 
 }
 
-
 // Remove Item
 
 if ( $quantity == 0 ) unset($cart[$item_code]);
-
 
 // If there are no items completely clear cart cookie of any data
 

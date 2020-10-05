@@ -6,26 +6,26 @@ $url = API_BASE.API_VERSION."/".$end_point."?";
 
 if ( $args ) $url .= http_build_query($args);
 
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-curl_setopt($ch, CURLOPT_USERPWD, API_KEY . ":" . API_PASS);
-$output = curl_exec($ch);
-
-curl_close($ch);
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+	curl_setopt($ch, CURLOPT_USERPWD, API_KEY . ":" . API_PASS);
+	$output = curl_exec($ch);
+	
+	curl_close($ch);
 
 	if ( !$return ) {
 		
-	return json_decode($output);
+		return json_decode($output);
 	
 	} else if ( $return == "raw" ) {
 	
-	return $output;	
+		return $output;	
 		
 	} else if ( $return == "echo" ) {
 		
-	echo $output;	
+		echo $output;	
 		
 	}	
 
@@ -35,30 +35,30 @@ curl_close($ch);
 
 function INZU_POST($end_point, $args, $return = false){
 
-$url = API_BASE.API_VERSION."/".$end_point;
-
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($args));
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-curl_setopt($ch, CURLOPT_USERPWD, API_KEY . ":" . API_PASS);
-$output = curl_exec($ch);
-
-curl_close($ch);
+	$url = API_BASE.API_VERSION."/".$end_point;
+	
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_POST, true);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($args));
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+	curl_setopt($ch, CURLOPT_USERPWD, API_KEY . ":" . API_PASS);
+	$output = curl_exec($ch);
+	
+	curl_close($ch);
 
 	if ( !$return ) {
 		
-	return json_decode($output);
+		return json_decode($output);
 	
 	} else if ( $return == "raw" ) {
 	
-	return $output;	
+		return $output;	
 		
 	} else if ( $return == "echo" ) {
 		
-	echo $output;	
+		echo $output;	
 		
 	}	
 
@@ -83,9 +83,10 @@ function site_map( ){
 		$id = $navigation_item->id;
 		
 		// Send category for store sub-menus
+		
 		$cat = $navigation_item->category;
 		
-		if($link){
+		if ($link) {
 			
 			$navigation .= '<li><a href="'.$link.'?entry_id='.$id.'&category='.$cat.'">'.$navigation_item->title.'</a>';
 		
@@ -97,14 +98,13 @@ function site_map( ){
 
 		// If there is a 'child' element that means a sub-menu exists
 		
-		if( $navigation_item->child ){
-			
+		if ( $navigation_item->child ) {
 			
 			// Build the sub-menu
 			
 			$navigation .= '<ul class="sub_menu">';
 			
-			foreach( $navigation_item->child as $sub_menu_item ){
+			foreach ( $navigation_item->child as $sub_menu_item ) {
 					
 				$sub_link = page_views($sub_menu_item->type);
 				
@@ -125,10 +125,6 @@ function site_map( ){
 
 	return $navigation;
 }
-
-
-
-
 
 function page_views($type){
 	

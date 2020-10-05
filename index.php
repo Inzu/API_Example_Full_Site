@@ -1,8 +1,6 @@
 <?php
 	
-	
 $pageTitle = "Inzu - Home";	
-
 
 // Load Includes
 
@@ -10,11 +8,9 @@ require("lib/core/functions.php");
 require("lib/core/config.php");  // This is where your API Key and API Password is stored
 require("template/template_start.php"); // Your site template start
 
-
 // Request data from Inzu for the "Home" section
 
 $inzu = INZU_GET("/cms/home");
-
 
 // HTML
 
@@ -22,7 +18,6 @@ echo<<<EOD
 <h2>Home</h2>
 <hr/><p class="article" >{$inzu->data[0]->entry}</p>
 EOD;
-
 
 // Get the latest "Event" entry
 
@@ -37,8 +32,6 @@ echo<<<EOD
 </div>
 EOD;
 
-
-
 // Get the latest "video" entry
 
 $inzu = INZU_GET("/cms/video", array("latest"=>"true"));
@@ -50,8 +43,6 @@ echo<<<EOD
 <hr/><span class="main_body">{$inzu->data[0]->description}</span>
 <hr/></div>
 EOD;
-
-
 
 // Newsletter Sign-up
 
@@ -90,17 +81,17 @@ $message = "Join our mailing list.";
 }
 
 echo<<<EOD
-<form name="form_main" action="index.php" method="post"  >
-<div style="margin-top:8px"><h4>NEWSLETTER</h4>
-<div>
-<p>$message</p>
-<input  name="email" type="text" value="E-mail address" onFocus="if(this.value=='E-mail address'){this.value=''}"; ><br />
-<input type="submit" value="Join">
-</div>
-</div>
+<form name="form_main" action="index.php" method="post">
+	<div style="margin-top:8px">
+		<h4>NEWSLETTER</h4>
+		<div>
+		<p>$message</p>
+		<input  name="email" type="text" value="E-mail address" onFocus="if(this.value=='E-mail address'){this.value=''}"; ><br/>
+		<input type="submit" value="Join">
+	</div>
+	</div>
 </form>
 EOD;
-
 
 include("template/template_end.php"); 
 

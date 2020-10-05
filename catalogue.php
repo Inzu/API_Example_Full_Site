@@ -1,8 +1,6 @@
 <?php
 
-
 $pageTitle = "Inzu - Catalogue";
-
 
 // Load Includes
 
@@ -10,16 +8,13 @@ require("lib/core/functions.php");
 require("lib/core/config.php");  /// This is where your API Key is stored
 require("template/template_start.php"); /// Your site template start
 
-
 // Inputs
 
 $entry_id = preg_replace("/[^0-9]/", "", @$_GET['entry_id']);
 
-
 // Request data from Inzu for the catalogue archive
 
 $inzu = INZU_GET("cms/catalogue");
-
 
 // HTML
 
@@ -36,7 +31,7 @@ if( ( $i == 1 && $entry_id == "" ) || ( $entry_id == $entry->entry_id ) ){ // Di
 echo<<<EOD
 <h2>Catalogue</h2>
 <hr/>
-<p><img src="{$entry->image}" width="200"  /></p>
+<p><img src="{$entry->image}" width="200"/></p>
 <h2>{$entry->title}</h2>
 <h3>code</h3>
 {$entry->code}
@@ -45,7 +40,7 @@ echo<<<EOD
 EOD;
 
 } else {
-
+	
 // Create Archive
 
 $date=intval($entry->date);
@@ -60,7 +55,6 @@ EOD;
 }
 
 }
-
 
 $right_col=<<<EOD
 <h2>Archive</h2>

@@ -1,8 +1,6 @@
 <?php
 
-
 $pageTitle = "Inzu - Articles";
-
 
 // Load Includes
 
@@ -10,17 +8,14 @@ require("lib/core/functions.php");
 require("lib/core/config.php");  // This is where your API Key is stored
 require("template/template_start.php"); // Your site template start
 
-
 // Inputs
 
 $entry_id = preg_replace("/[^0-9]/", "", @$_GET['entry_id']);
-
 
 // Request data from Inzu for the 32 latest "Article" entries ordered by date and in ascending order
 
 $arguments = array("page"=>"1", "page_rows"=>"32", "order"=>"date", "order_type"=>"ASC");
 $inzu = INZU_GET("cms/articles", $arguments);
-
 
 // HTML
 
@@ -34,7 +29,6 @@ $i++;
 
 if(( $i == 1 && $entry_id == "" ) || ( $entry_id == $entry->entry_id )){ // Displays the first entry if an entry has not been selected from the archive
 
-
 // Loop through the file attachments for the article
 
 foreach ($entry->file_list as $file ){
@@ -46,16 +40,15 @@ $files.=<<<EOD
 EOD;
 
 }
-
-
 // Create the page and include the attachments
 
 echo<<<EOD
 <h2>Article</h2>
-<hr/><h3>{$entry->title}</h3>
+<hr/>
+<h3>{$entry->title}</h3>
 <div class="article">
-{$entry->article}
-{$files}
+	{$entry->article}
+	{$files}
 </div>
 EOD;
 
@@ -71,7 +64,6 @@ EOD;
 
 }
 }
-
 
 $right_col=<<<EOD
 <h2>Articles Posted</h2>

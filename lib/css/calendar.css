@@ -17,7 +17,6 @@
 	
 }
 
-
 .calendar  thead  tr {
 
 	height: 28px;	
@@ -40,8 +39,6 @@
 
 }
 
-
-
 /* (Mo, Tu, We, etc.) */
 
 .calendar .dayName {
@@ -55,7 +52,6 @@
 
 }
 
-
 /* Empty */
 
 .calendar .empty {
@@ -63,7 +59,6 @@
 	border: 1px solid #999999;
 
 }
-
 
 /* Day cell */
 
@@ -79,13 +74,11 @@
 
 }
 
-
 	.calendar .dayCell:hover {
 		
 		background-color: #aca998;
 		
 	}
-
 
 /* Today */
 
@@ -95,7 +88,6 @@
 	border: 1px solid #AAAAAA;
 	
 }
-
 
 /* Selected */
 
@@ -114,8 +106,6 @@
 	cursor: pointer;
 
 }
-
-
 
 /* Controls */
 
@@ -163,8 +153,6 @@
 
 }		
 
-
-
 /* sold out days */
 
 [data-sale="0"]{
@@ -174,6 +162,3 @@
 	color:#CCCCCC;
 
 }
-
-
-

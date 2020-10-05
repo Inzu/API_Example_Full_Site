@@ -1,16 +1,13 @@
 <?php
 
-
 session_start();
 
-
-// The cart info is stored in a two dimensional serialised array using a cookie called "cart"
+// The cart info is stored in a 2D serialised array using a cookie called "cart"
 
 $cart = preg_replace("/[^a-z0-9,{};:\".]/", "", @$_COOKIE["cart"]); 
 
 $item_code = preg_replace("/[^a-z0-9_]/", "", @$_REQUEST['item_code']);
 $price = preg_replace("/[^a-z0-9._]/", "", @$_REQUEST['price']);
-
 
 // For items with variations
 
@@ -24,13 +21,11 @@ if ($variation) {
 
 }
 
-
 // Use this session variable to forward user back to the page they were on when selecting an item
 
 if ( !$_SESSION['page_state'] ) $_SESSION['page_state'] = "store.php";
 
 $_SESSION['page_state'] = $_SESSION['page_state']."?category=".$_SESSION['category'];
-
 
 // If no items in cart add item to cart cookie and forward to 
 
@@ -50,7 +45,6 @@ if ( !$cart ) {
 
 	$cart = unserialize($cart);
 	
-	
 	// Increase quantity if item already exists
 	
 	foreach( $cart as $item =>$val ) {
@@ -67,7 +61,6 @@ if ( !$cart ) {
 		$cart[$item_code]['price'] = $price;
 
 	}
-
 	
 	$cart = serialize($cart);
 	
@@ -76,6 +69,5 @@ if ( !$cart ) {
 	header("Location: ".$_SESSION['page_state']);
 	 
 }
-
 
 ?>
