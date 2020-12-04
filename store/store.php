@@ -37,7 +37,6 @@ EOD;
 // Request data from Inzu for the selected category
 
 $inzu = INZU_GET("store/product", array("category"=>$category));
-$inzu = INZU_GET("store/product", array("item_array"=>5297), "echo");
 
 // A loop for each product
 
